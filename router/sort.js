@@ -20,6 +20,7 @@ router.get('/cates', sortsHandler.getSorts)
 router.post('/addcates', expressJoi(name_sorts_schema), sortsHandler.addSorts)
 router.get('/deletecates/:id', expressJoi(id_sorts_schema) ,sortsHandler.deleteSorts)
 router.get('/cates/:id', expressJoi(id_sorts_schema), sortsHandler.getSort)
+router.get('/usercates', sortsHandler.getUserSorts)
 router.post('/updatecates', expressJoi(update_sort_schema), sortsHandler.updateSort)
 
 // 向外共享路由

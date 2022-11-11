@@ -21,6 +21,8 @@ const articleHandler = require('./router_handler/article')
 // 导入验证规则模块
 const expressJoi = require('@escook/express-joi')
 // 导入需要的验证规则对象
+const { pub_article_schema, change_article_schema, set_work_schema } = require('../schema/article_schema')
+
 const { pub_article_schema } = require('../schema/article_schema')
 
 // 挂载路由
@@ -29,6 +31,12 @@ const { pub_article_schema } = require('../schema/article_schema')
  *  将文件类型的数据  解析并挂载到 req.file 上
  *  将文本类型的数据  解析并挂载到 req.body 上
  */
+router.get('/articles', articleHandler.getArticles)
+router.get('/userarticles', articleHandler.getUserArticles)
+router.post('/publish', upload.single('cover_img') , expressJoi(pub_article_schema) , articleHandler.pubArticle)
+router.post('/change', expressJoi(change_article_schema), articleHandler.changeArticle)
+router.post('/setwork', expressJoi(set_work_schema), articleHandler.setWork)
+router.get('/work', articleHandler.getWork)
 router.post('/publish', upload.single('cover_img') , expressJoi(pub_article_schema) , articleHandler.pubArticle)
 
 
