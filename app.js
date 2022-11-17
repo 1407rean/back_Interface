@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // res.cc()
 app.use((req, res, next) => {
-  res.cc = (err, status = 1) => {
+  res.cc = (err, code = 1) => {
     res.send({
       code,
       message: err instanceof Error ? err.message : err,
@@ -46,7 +46,7 @@ const userinfoRouter = require("./router/userinfo");
 app.use("/my", userinfoRouter);
 // 导入并使用分类路由
 const sortRouter = require("./router/sort");
-app.use("/my/article", sortRouter);
+app.use("/my/sort", sortRouter);
 // 导入并使用文章路由
 const articleRouter = require("./router/article");
 app.use("/my/article", articleRouter);
