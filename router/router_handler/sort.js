@@ -17,7 +17,7 @@
    db.query(sql, (err, results) => {
      if (err) return res.cc(err);
      res.send({
-       status: 0,
+       code: 200,
        message: "分类列表获取成功！",
        data: results,
      });
@@ -42,7 +42,7 @@
          if (err) return res.cc(err);
          // 执行成功 但影响行数不等于 1
          if (results.affectedRows !== 1) return res.cc("新增分类失败！");
-         res.cc(0, "新增分类成功！");
+         res.cc(200, "新增分类成功！");
        });
      });
    });
@@ -56,7 +56,7 @@
      if (err) return res.cc(err);
      // 执行成功 但影响行数 不为1
      if (results.affectedRows !== 1) return res.cc("删除失败！");
-     res.cc(0, "删除成功！");
+     res.cc(200, "删除成功！");
    });
  };
  
@@ -69,7 +69,7 @@
      // 执行成功  但数据条数为 0
      if (results.length !== 1) return res.cc("获取失败！");
      res.send({
-       status: 0,
+       code: 200,
        message: "获取成功！",
        data: results,
      });
@@ -84,7 +84,7 @@
      console.log(req.user);
      if (err) return res.cc(err);
      res.send({
-       status: 0,
+       code: 200,
        message: "分类列表获取成功！",
        data: results,
      });

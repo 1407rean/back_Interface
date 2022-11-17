@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use((req, res, next) => {
   res.cc = (err, status = 1) => {
     res.send({
-      status,
+      code,
       message: err instanceof Error ? err.message : err,
     });
   };

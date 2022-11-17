@@ -12,7 +12,7 @@
      if (err) return res.cc(err);
      if (results.length !== 1) return res.cc("获取用户信息失败！");
      res.send({
-       status: 0,
+       code: 200,
        message: "获取用户信息成功！",
        data: results[0],
      });
@@ -27,7 +27,7 @@
      if (err) return res.cc(err);
      // sql语句执行成功  但影响行数不为 1
      if (results.affectedRows !== 1) return res.cc("修改失败！");
-     return res.cc(0, "修改成功！");
+     return res.cc(200, "修改成功！");
    });
  };
  
@@ -39,7 +39,7 @@
      if (err) return res.cc(err);
      // 影响行数不为1
      if (results.affectedRows !== 1) return res.cc("删除失败！");
-     res.cc(0, "删除成功！");
+     res.cc(200, "删除成功！");
    });
  };
  //* 获取用户列表的处理函数
@@ -77,7 +77,7 @@
        if (err) return res.cc(err);
        // 执行成功 但影响行数不等于 1
        if (results.affectedRows !== 1) return res.cc("重置密码失败！");
-       res.cc(0, "重置密码成功！");
+       res.cc(200, "重置密码成功！");
      });
    });
  };

@@ -12,7 +12,7 @@
      db.query(sql, (err, results)=>{
          if (err) return res.cc(err)
          res.send({
-             status: 0,
+             code: 200,
              message: '文章列表获取成功！',
              data: results
          })
@@ -25,7 +25,7 @@
      db.query(sql, req.user.id,(err, results)=>{
          if (err) return res.cc(err)
          res.send({
-             status: 0,
+             code: 200,
              message: '文章列表获取成功！',
              data: results
          })
@@ -46,7 +46,7 @@
              if (err) return res.cc(err)
              // 影响行数不等于 1
              if (results.affectedRows !== 1) res.cc('设置失败！')
-             res.cc(0, '设置成功！')
+             res.cc(200, '设置成功！')
          })
      })
  }
@@ -58,7 +58,7 @@
      db.query(sql, req.user.id, (err, results)=>{
          if (err) return res.cc(err)
          res.send({
-             status: 0,
+             code: 200,
              message: '代表作获取成功！',
              data: results
          })
@@ -85,7 +85,7 @@
                  if (err) return res.cc(err)
                  // 执行成功 但影响行数 不等于 1
                  if (results.affectedRows !== 1) return res.cc('文章发表失败！')
-                 res.cc(0, '文章发表成功！')
+                 res.cc(200, '文章发表成功！')
              })
          })
      })
@@ -105,7 +105,7 @@
              if (err) return res.cc(err)
              // 影响行数不等于 1
              if (results.affectedRows !== 1) res.cc('修改失败！')
-             res.cc(0, '修改成功！')
+             res.cc(200, '修改成功！')
          })
      })
  }

@@ -39,7 +39,7 @@ exports.regUser = (req, res) => {
       if (results.affectedRows !== 1) {
         return res.cc("注册失败，请稍后再试！");
       }
-      return res.cc(0, "注册成功！");
+      return res.cc(200, "注册成功！");
     });
   });
 };
