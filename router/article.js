@@ -23,8 +23,6 @@ const expressJoi = require('@escook/express-joi')
 // 导入需要的验证规则对象
 const { pub_article_schema, change_article_schema, set_work_schema } = require('../schema/article_schema')
 
-const { pub_article_schema } = require('../schema/article_schema')
-
 // 挂载路由
 /**
  *  upload.single() 是一个局部生效的中间件 用来解析 formdata 格式的表单数据

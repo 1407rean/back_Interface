@@ -71,7 +71,7 @@ exports.login = (req, res) => {
     });
     // 调用res.send将token响应给客户端
     res.send({
-      status: 0,
+      code: 200,
       message: '登录成功',
       token: 'Bearer ' + tokenStr
     })

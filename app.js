@@ -17,6 +17,10 @@ app.use(cors());
 // 配置解析表单数据的中间件
 app.use(express.urlencoded({ extended: false }));
 
+// post下的body
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true }))
+
 // res.cc()
 app.use((req, res, next) => {
   res.cc = (err, status = 1) => {
@@ -32,6 +36,7 @@ app.use((req, res, next) => {
 app.use(
   expressJWT({ secret: config.jwtSecretKey }).unless({ path: [/^\/api\//] })
 );
+
 
 // 导入并使用用户路由
 const userRouter = require("./router/user");
@@ -51,7 +56,7 @@ app.use((err, req, res, next) => {
   // 捕获 joi 错误
   if (err instanceof joi.ValidationError) return res.cc(err);
   // 捕获token认证失败的错误
-  if (err.name === "UnauthorizedError") return res.cc("身份认证失败");
+  if (err.name === "UnauthorizedError") return res.cc("身份认证失败楼");
   // 未知错误
   res.cc(err);
 });
