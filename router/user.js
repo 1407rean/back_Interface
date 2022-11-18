@@ -17,7 +17,7 @@ const { reg_log_schema } = require("../schema/user_schema");
 
 // 挂载路由请求
 router.post("/reguser", expressJoi(reg_log_schema), userHandler.regUser);
-router.post("/login", expressJoi(reg_log_schema), userHandler.login);
+router.post("/login", userHandler.login);
 
 // 暴露路由对象
 module.exports = router;

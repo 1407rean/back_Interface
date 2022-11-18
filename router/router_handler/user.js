@@ -46,34 +46,35 @@ exports.regUser = (req, res) => {
 
 //* 登录的处理函数
 exports.login = (req, res) => {
-  // 获取表单数据
-  const userInfo = req.body;
+  res.send(req.body)
+  // // 获取表单数据
+  // const userInfo = req.body;
 
-  // 定义查询用户数据的SQL语句
-  const sql = "select * from reg_users where username=?";
-  db.query(sql, userInfo.username, (err, results) => {
-    // 执行SQL失败
-    if (err) return res.cc(err);
-    // 执行SQL语句成功  但查询到的数据条数不等于 1
-    if (results.length !== 1) return res.cc("登录失败！");
-    // 判断用户输入的密码是否正确
-    const compareResult = bcrypt.compareSync(
-      userInfo.password,
-      results[0].password
-    );
-    if (compareResult == false) return res.cc("密码输入错误！");
+  // // 定义查询用户数据的SQL语句
+  // const sql = "select * from reg_users where username=?";
+  // db.query(sql, userInfo.username, (err, results) => {
+  //   // 执行SQL失败
+  //   if (err) return res.cc(err);
+  //   // 执行SQL语句成功  但查询到的数据条数不等于 1
+  //   if (results.length !== 1) return res.cc("登录失败！");
+  //   // 判断用户输入的密码是否正确
+  //   const compareResult = bcrypt.compareSync(
+  //     userInfo.password,
+  //     results[0].password
+  //   );
+  //   if (compareResult == false) return res.cc("密码输入错误！");
 
-    // 生成 token
-    const user = { ...results[0], password: "", user_pic: "" };
-    // 对用户的信息加密 生成token
-    const tokenStr = jwt.sign(user, config.jwtSecretKey, {
-      expiresIn: config.expiresIn,
-    });
-    // 调用res.send将token响应给客户端
-    res.send({
-      code: 200,
-      message: '登录成功',
-      token: 'Bearer ' + tokenStr
-    })
-  });
+  //   // 生成 token
+  //   const user = { ...results[0], password: "", user_pic: "" };
+  //   // 对用户的信息加密 生成token
+  //   const tokenStr = jwt.sign(user, config.jwtSecretKey, {
+  //     expiresIn: config.expiresIn,
+  //   });
+  //   // 调用res.send将token响应给客户端
+  //   res.send({
+  //     code: 200,
+  //     message: '登录成功',
+  //     token: 'Bearer ' + tokenStr
+  //   })
+  // });
 };
